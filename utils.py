@@ -27,7 +27,8 @@ def get_sample(n_objects, positive_class_weight, seed=0, loc=10):
         seed (int): A random seed to ensure the reproducibility of the normal distributions.
         loc (int): The center of the right normal distribution.
     Returns:
-        A tuple consisting of true labels and synthetic classifier scores.
+        A tuple consisting of true labels and synthetic classifier scores
+        sampled from two normal distributions.
 
     """
     np.random.seed(seed)
