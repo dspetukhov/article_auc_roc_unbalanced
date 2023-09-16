@@ -21,13 +21,13 @@ def get_sample(n_objects, positive_class_weight, seed=0, loc=10):
     """Create a sample from two normal distributions.
 
     Args:
-        n_objects (int): The total number of objects in the distribution.
+        n_objects (int): The total number of objects in the sample, i.e. sample size.
         positive_class_weight (float): The proportion of positive objects,
-        or in other words, the size of the right distribution relative to the left one.
-        seed (int): A random seed for reproducible results.
+        i.e. the size of the right normal distribution relative to the left one.
+        seed (int): A random seed to ensure the reproducibility of the normal distributions.
         loc (int): The center of the right normal distribution.
     Returns:
-        A tuple with the left and right normal distributions.
+        A tuple consisting of true labels and synthetic classifier scores.
 
     """
     np.random.seed(seed)
@@ -47,7 +47,7 @@ def get_metrics(data):
     Args:
         data (tuple): A tuple containing true labels and synthetic classifier scores.
     Returns:
-        A tuple of AUC ROC and AUC PR scores according to the input data.
+        A tuple of AUC ROC and AUC PR values according to the input data.
 
     """
     y_true, d = data
@@ -55,16 +55,16 @@ def get_metrics(data):
 
 
 def get_curves(n_objects, class_weight, loc=10):
-    """Get data to plot ROC and PR curves by using sample from `get_sample`.
+    """Get data to plot ROC and PR curves using the sample from `get_sample`.
 
     Args:
-        n_objects (int): The number of objects in the sample.
-        class_weight (float): The proportion of positive objects,
-        or in other words, the size of the right distribution relative to the left one.
+        n_objects (int): The number of objects in the sample, i.e. sample size.
+        positive_class_weight (float): The proportion of positive objects,
+        i.e. the size of the right normal distribution relative to the left one.
         loc (int): The center of the right normal distribution.
     Returns:
         A tuple containing a dictionary of minimum and maximum AUCs, FPR, TPR, precision and recall values
-        at `seeds` corresponding to the lowest and highest values of AUC ROC during the `seed` variation.
+        at `seeds` corresponding to the minimum and maximum AUC ROC values obtained by iterating over the `seeds`.
 
     """
 
@@ -102,11 +102,15 @@ def get_curves(n_objects, class_weight, loc=10):
     )
 
 
-def plot_curves(out, min_fpr, max_fpr, min_tpr, max_tpr, min_recall, max_recall, min_precision, max_precision):
+def plot_curves(
+    out,
+    min_fpr, max_fpr, min_tpr, max_tpr,
+    min_recall, max_recall, min_precision, max_precision
+):
     """Plot ROC and PR curves using the output of `get_curves` as input data.
 
     Args:
-        out (dict): A dictionary of the minimum and maximum values of AUC ROC and AUC PR.
+        out (dict): A dictionary containing the minimum and maximum values of AUC ROC and AUC PR.
         min_fpr (list): Vector of false positive rates corresponding to the minimum AUC ROC value.
         max_fpr (list): Vector of false positive rates corresponding to the maximum AUC ROC value.
         min_tpr (list): Vector of true positive rates corresponding to the minimum AUC ROC value.

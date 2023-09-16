@@ -6,7 +6,8 @@ from training_utils import seeds
 
 
 def get_model(eval_metric):
-    """Get XGBoost model instance with the specific evaluation metric."""
+    """Get XGBoost model instance
+    with the specific evaluation metric for early stopping."""
     return XGBClassifier(
         n_estimators=22_000,
         eval_metric=eval_metric,
@@ -29,8 +30,8 @@ def get_predictions(dataset, model):
 
 
 def job(eval_metric):
-    """Routine for model training and metrics estimation on the testing part of the dataset
-    at various seeds."""
+    """Routine for model training and metrics estimation
+    on the testing part of the dataset at various seeds."""
     out_metrics = {
         'AUC ROC': [],
         'AUC PR': [],

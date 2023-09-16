@@ -29,7 +29,7 @@ def make_data(random_state):
 
 def make_datasets(data):
     """
-    Split synthetic sample into training, validation and testing parts
+    Split synthetic dataset into training, validation and testing parts
     in the 50/25/25% proportion.
     """
     x_training, x, y_training, y = train_test_split(
