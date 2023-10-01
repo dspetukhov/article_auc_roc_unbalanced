@@ -64,8 +64,10 @@ def get_curves(n_objects, class_weight, loc=10):
         i.e. the size of the right normal distribution relative to the left one.
         loc (int): The center of the right normal distribution.
     Returns:
-        A tuple containing a dictionary of minimum and maximum AUCs, FPR, TPR, precision and recall values
-        at `seeds` corresponding to the minimum and maximum AUC ROC values obtained by iterating over the `seeds`.
+        A tuple containing a dictionary of minimum and maximum AUCs,
+        FPR, TPR, precision and recall values
+        at the `seeds` corresponding to the minimum and maximum AUC ROC values
+        during iteration over the `seeds`.
 
     """
     out = {
