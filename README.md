@@ -4,4 +4,4 @@ The article was published on Medium:
 
 The essential functions are located in [utils.py](utils.py).
 
-Each of the four experiments in the article a corresponding `.ipynb` file. The code for model training in the fourth experiment can be found in [04-experiment](04-experiment).
+Each of the four experiments in the article has a corresponding `.ipynb` file. The code for model training in the fourth experiment can be found in [04-experiment](04-experiment).

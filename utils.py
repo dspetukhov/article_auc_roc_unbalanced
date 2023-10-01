@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 seeds = [978, 672, 821, 445, 488, 449, 753, 962, 874, 287, 257, 598, 100, 136, 305, 376, 548, 229, 265, 425]
 # it was obtained through
-# ', '.join(map(str, [random.randint(0, 1001) for i in range(20)]))
+# [random.randint(0, 1001) for i in range(20)]
 
 class_weights = [0.4, 0.3, 0.2, 0.1, 0.05, 0.01, 0.005, 0.001, 0.0005]
 
@@ -17,14 +17,14 @@ number_of_objects = np.concatenate([
 ])
 
 
-def get_sample(n_objects, positive_class_weight, seed=0, loc=10):
+def get_sample(n_objects, positive_class_weight, seed, loc=10):
     """Create a sample from two normal distributions.
 
     Args:
         n_objects (int): The total number of objects in the sample, i.e. sample size.
         positive_class_weight (float): The proportion of positive objects,
         i.e. the size of the right normal distribution relative to the left one.
-        seed (int): A random seed to ensure the reproducibility of the normal distributions.
+        seed (int): A random seed to ensure the reproducibility of normal distributions.
         loc (int): The center of the right normal distribution.
     Returns:
         A tuple consisting of true labels and synthetic classifier scores
@@ -68,7 +68,6 @@ def get_curves(n_objects, class_weight, loc=10):
         at `seeds` corresponding to the minimum and maximum AUC ROC values obtained by iterating over the `seeds`.
 
     """
-
     out = {
         'ROC': {'min': None, 'max': 0.0005},
         'PR': {'min': None, 'max': 0.0005},
@@ -143,4 +142,4 @@ def plot_curves(
             metric,
             (out[metric]['max'] * 100 / out[metric]['min']) - 100)
         )
-    plt.tight_layout()
+    plt.tight_layout(pad=2)

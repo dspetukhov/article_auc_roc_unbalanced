@@ -14,7 +14,7 @@ seeds = [978, 672, 821, 445, 488, 449, 753, 962, 874, 287, 257, 598, 100, 136, 3
 
 def make_data(random_state):
     """
-    Create synthetic dataset according to #4 experiment.
+    Create a synthetic dataset according to the #4 experiment.
     """
     return make_classification(
         n_samples=50_000_000,
