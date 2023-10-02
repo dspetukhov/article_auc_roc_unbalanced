@@ -1,6 +1,6 @@
 This is the code for the experiments in an article about the viability of AUC ROC in unbalanced binary classification problems.
 
-The article was published on Medium: 
+The article was published on Medium: [https://medium.com/birds-eye-view-on-the-viability-of-auc-roc-in-unbalanced-binary-classification-problems](https://medium.com/its-tinkoff/birds-eye-view-on-the-viability-of-auc-roc-in-unbalanced-binary-classification-problems-b4dbff7a79ea).
 
 The essential functions are located in [utils.py](utils.py).
 
